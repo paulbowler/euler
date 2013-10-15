@@ -1,9 +1,8 @@
 (ns euler.core)
 
-(first
- (sort >
-       (for [x (range 999 100 -1)
-             y (range 999 100 -1)
+(apply max
+       (for [x (range 100 999)
+             y (range 100 999)
           :let [t (* x y)]
           :when (= (str t) (apply str (reverse (str t))))]
-          t)))
+          t))
