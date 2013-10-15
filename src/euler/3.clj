@@ -1,7 +1,15 @@
 (ns euler.core)
 
-(defn factors [n]
-  (filter #(empty? (factors %)) (filter #(zero? (rem n %)) (range 2 n))))
+(defn largest-prime-factor
+  ([n] (largest-prime-factor n 2))
+  ([n d]
+   (if (> d n)
+     (dec d)
+     (recur
+      (#(if (zero? (rem % d))
+          (recur (/ % d))
+          %)
+        n)
+      (inc d)))))
 
-
-(take 5 (factors 600851475143))
+(largest-prime-factor 600851475143)
