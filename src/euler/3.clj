@@ -1,7 +1,7 @@
 (ns euler.core)
 
 (defn factors [n]
-  (filter #(empty? (factors %)) (filter #(zero? (rem n %)) (range n 2 -1))))
+  (filter #(empty? (factors %)) (filter #(zero? (rem n %)) (range 2 n))))
 
 
-(first (factors 600851475143))
+(take 5 (factors 600851475143))
