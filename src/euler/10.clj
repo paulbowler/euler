@@ -1,20 +1,8 @@
 (ns euler.core)
 
-; We can reuse the prime factor code from Q3 for an (inefficient) solution
+(defn primes [n]
+      (loop [res '() lst (cons 2 (range 3 n 2))]
+         (if (>= (* (first lst) (first lst)) n) (concat (reverse res) lst)
+            (recur (cons (first lst) res) (doall (remove #(zero? (mod % (first lst))) lst))))))
 
-(defn largest-prime-factor
-  ([n] (largest-prime-factor n 2))
-  ([n d]
-   (if (> d n)
-     (dec d)
-     (recur
-      (#(if (zero? (rem % d))
-          (recur (/ % d))
-          %)
-        n)
-      (inc d)))))
-
-(defn prime? [n]
-  (= n (largest-prime-factor n)))
-
-(reduce + (filter prime? (range 2 2000000)))
+(reduce + (primes 2000000))
