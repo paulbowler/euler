@@ -1,6 +1,6 @@
 # euler
 
-Clojure solutions for Project Euler problems @ http://http://projecteuler.net
+Clojure solutions for Project Euler problems @ http://projecteuler.net
 
 
 ## License
